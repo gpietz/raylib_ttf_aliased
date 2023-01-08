@@ -25,7 +25,7 @@ endif()
 #target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${raylib_LIBRARIES})
 
 # Declaring executable
-add_executable(${CMAKE_PROJECT_NAME} src/main.cpp)
+add_executable(${CMAKE_PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 target_link_libraries(${CMAKE_PROJECT_NAME} raylib)
 
 # C++ hardcode options
