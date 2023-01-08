@@ -86,25 +86,27 @@ int main() {
         BeginDrawing();
         ClearBackground(BLACK);
 
-        for (auto tl = textLines.begin(); tl != textLines.end(); ++tl) {
+        for (auto textLine = textLines.begin(); textLine != textLines.end(); ++textLine) {
             // Reference to previous text line
-            auto ll = tl != textLines.begin() ? std::prev(tl) : textLines.end();
+            auto previousLine = textLine != textLines.begin() ? std::prev(textLine) : textLines.end();
 
             // Update offset for the text lines
-            if (!tl->hasOffset()) {
-                tl->lineOffset = ll != textLines.end() ? ll->lineOffset + ll->lineHeight : screenDimension.y;
-            } else if (tl->lineOffset <= -(tl->lineHeight)) {
+            if (!textLine->hasOffset()) {
+                textLine->lineOffset = previousLine != textLines.end()
+                        ? previousLine->lineOffset + previousLine->lineHeight
+                        : screenDimension.y;
+            } else if (textLine->lineOffset <= -(textLine->lineHeight)) {
                 continue;
             } else {
-                tl->lineOffset -= moveSpeed;
+                textLine->lineOffset -= moveSpeed;
             }
 
             // Calculate horizontal position for line
-            textPosition.x = screenDimension.x / 2 - tl->lineWidth / 2;
-            textPosition.y = tl->lineOffset;
+            textPosition.x = screenDimension.x / 2 - textLine->lineWidth / 2;
+            textPosition.y = textLine->lineOffset;
 
             // Draw the text and increase line offset
-            DrawTextEx(font, tl->c_str(), textPosition, static_cast<float>(font.baseSize), 0, WHITE);
+            DrawTextEx(font, textLine->c_str(), textPosition, static_cast<float>(font.baseSize), 0, WHITE);
         }
 
         EndDrawing();
