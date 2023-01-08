@@ -9,5 +9,5 @@ Programmed in C++ with using the raylib library.
 
 ### Screenshot
 <p align="center">
- <img src="https://raw.githubusercontent.com/gpietz/ttf_aliased/master/media/screenshot.png" />
+ <img src="https://raw.githubusercontent.com/gpietz/raylib_ttf_aliased/master/media/screenshot.png" />
 </p>
